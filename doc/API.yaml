@@ -1,0 +1,115 @@
+---
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: API Tareas
+  description: APi para gestion de tareas.
+paths:
+  /tareas/consultar:
+    get:
+      description: Consulta las tareas de acuerdo a los parametros de busqueda.
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              pk:
+                type: integer
+                format: int64
+              tarea_descripcion:
+                type: string
+              tarea_fecha_de_vencimiento:
+                type: string
+                format: date-time
+              tarea_estado:
+                type: boolean
+  /tareas/crear:
+    post:
+      description: Crea una nueva `tarea`.
+      parameters:
+        - name: fecha_de_creacion
+          in: query
+          description: fecha de creacion de la tarea
+          required: true
+          type: string
+          format: date-time
+        - name: descripcion
+          in: query
+          description: descripcion de la tarea
+          required: true
+          type: string
+          format: date-time
+        - name: estado
+          in: query
+          description: Estado de la tarea, Si/No esta finalizada
+          required: true
+          type: boolean
+        - name: fecha_de_vencimiento
+          in: query
+          description: fecha de vencimiento de la tarea
+          required: true
+          type: string
+          format: date-time
+        - name: Usuario
+          in: query
+          description: Usuario
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+  /tareas/actualizar:
+    post:
+      description: Actualiza la `tarea` indicada.
+      parameters:
+        - name: pk
+          in: query
+          description: Primary Key
+          required: true
+          type: integer
+          format: int64
+        - name: fecha_de_creacion
+          in: query
+          description: fecha de creacion de la tarea
+          required: true
+          type: string
+          format: date-time
+        - name: descripcion
+          in: query
+          description: descripcion de la tarea
+          required: true
+          type: string
+          format: date-time
+        - name: estado
+          in: query
+          description: Estado de la tarea, Si/No esta finalizada
+          required: true
+          type: boolean
+        - name: fecha_de_vencimiento
+          in: query
+          description: fecha de vencimiento de la tarea
+          required: true
+          type: string
+          format: date-time
+        - name: Usuario
+          in: query
+          description: Usuario
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+  /tareas/borrar:
+    post:
+      description: Borra la `tarea` indicada.
+      parameters:
+        - name: pk
+          in: query
+          description: Primary Key
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: OK
